@@ -1,11 +1,12 @@
+ï»¿
 
-
--- 1.Filtro para contagem de territorios por região
+-- 1.Filtro para contagem de territorios por regiï¿½o
 SELECT RegionID, COUNT(*) AS TotalTerritories
 FROM Territories
 GROUP BY RegionID;
 
 -- 2.Selecione da tabela order_details todas as ordens que tiveram
+--pelo menos um item com mais de 50 unidade vendidadas
 
 SELECT * FROM [Order Details];
 
@@ -23,11 +24,11 @@ SELECT * FROM Employees;
 -- 3.qual o tempo medio de envio por cidade destino
 
 SELECT Orders.ShipCity AS Cidade, 
-  AVG(DATEDIFF(day, Orders.OrderDate, Orders.ShippedDate)) AS MediaDias
+  AVG(DATEDIFF(DAY, Orders.OrderDate, Orders.ShippedDate)) AS MediaDias
 FROM Orders 
 GROUP BY Orders.ShipCity;
 
--- 4.Para cada empregado exiba seu total de vendas em cada país
+-- 4.Para cada empregado exiba seu total de vendas em cada paï¿½s
 
 SELECT 
   Employees.FirstName, 
@@ -43,7 +44,7 @@ GROUP BY
   Customers.Country
 ORDER BY Employees.FirstName;
 
--- 5.qual o tempo medio de envio por cidade destino
+-- 5.Calcule o preï¿½o de cada pedido apï¿½s os descontos seram aplicados
 
 SELECT Orders.OrderID,[Order Details].UnitPrice * ( 1 - [Order Details].Discount) AS ValorTotal
 FROM Orders 
@@ -64,7 +65,6 @@ INNER JOIN Categories c ON p.CategoryID = c.CategoryID;
 DROP VIEW ProductDetails;
 
 SELECT * FROM ProductDetails;
-
 
 
 
